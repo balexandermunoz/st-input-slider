@@ -70,6 +70,7 @@ def st_input_slider(
     options: dict
         Additional options for the slider component. Options include:
         - "color": str, default is the primary theme color. This sets the color of the slider.
+        - "marks": bool, default false. Set initial and final marks.
         - "inputWidth": str, default is "48px". This sets the width of the input box.
         - "disableUnderline": bool, default is False. If True, the underline of the input box is disabled.
     key: str or None
