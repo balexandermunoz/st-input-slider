@@ -23,7 +23,7 @@ class InputSlider extends StreamlitComponentBase<State> {
       value: this.props.args.value,
     }
   }
-   marks = [
+  marks = [
     {
       value: this.props.args.min_value,
       label: this.props.args.min_value,
@@ -32,7 +32,7 @@ class InputSlider extends StreamlitComponentBase<State> {
       value: this.props.args.max_value,
       label: this.props.args.max_value,
     },
-  ];
+  ]
   handleSliderChange = (event: Event, newValue: number | number[]) => {
     this.setState({ value: newValue as number })
   }
@@ -90,7 +90,11 @@ class InputSlider extends StreamlitComponentBase<State> {
                 step={this.props.args.step}
                 min={this.props.args.min_value}
                 max={this.props.args.max_value}
-                marks={this.props.args.options && this.props.args.options.marks ? this.marks : false}
+                marks={
+                  this.props.args.options && this.props.args.options.marks
+                    ? this.marks
+                    : false
+                }
               />
             </Grid>
             <Grid item>
