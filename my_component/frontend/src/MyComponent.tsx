@@ -106,7 +106,6 @@ class InputSlider extends StreamlitComponentBase<State> {
   }
 
   public render = (): React.ReactNode => {
-    console.log(this.props.theme)
     const disableUnderline =
       this.props.args.options && this.props.args.options.disableUnderline
         ? this.props.args.options.disableUnderline
