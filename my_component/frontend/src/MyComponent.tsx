@@ -1,11 +1,10 @@
 import * as React from "react"
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles"
+import { createTheme, ThemeProvider } from "@mui/material/styles"
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import Slider from "@mui/material/Slider"
 import MuiInput from "@mui/material/Input"
 import Typography from "@mui/material/Typography"
-import { alpha } from "@mui/system"
 
 import {
   Streamlit,
@@ -47,23 +46,23 @@ const createCustomTheme = (props: any) =>
       MuiInput: {
         styleOverrides: {
           input: {
-            width: props.args.options && props.args.options.inputWidth
-            ? props.args.options.inputWidth
-            : "48px",
-          }
-        }
-      }
+            width:
+              props.args.options && props.args.options.inputWidth
+                ? props.args.options.inputWidth
+                : "48px",
+          },
+        },
+      },
+      MuiSlider: {
+        styleOverrides: {
+          thumb: {
+            height: 12,
+            width: 12,
+          },
+        },
+      },
     },
   })
-
-const StyledSlider = styled(Slider)(({ theme }) => {
-  return {
-    "& .MuiSlider-thumb": {
-      height: 12,
-      width: 12,
-    },
-  }
-})
 
 interface State {
   value: number
@@ -78,9 +77,7 @@ class InputSlider extends StreamlitComponentBase<State> {
   }
 
   handleSliderChange = (event: Event, newValue: number | number[]) => {
-    this.setState({ value: newValue as number }, () => {
-      Streamlit.setComponentValue(this.state.value)
-    })
+    this.setState({ value: newValue as number })
   }
 
   handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -125,11 +122,14 @@ class InputSlider extends StreamlitComponentBase<State> {
           </Typography>
           <Grid container spacing={2} alignItems="center">
             <Grid item xs>
-              <StyledSlider
+              <Slider
                 value={
                   typeof this.state.value === "number" ? this.state.value : 0
                 }
                 onChange={this.handleSliderChange}
+                onChangeCommitted={() =>
+                  Streamlit.setComponentValue(this.state.value)
+                }
                 aria-labelledby="input-slider"
                 step={this.props.args.step}
                 min={this.props.args.min_value}
