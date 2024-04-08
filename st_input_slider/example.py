@@ -8,10 +8,11 @@ options = {
     "inputWidth": "58px",
     "disableUnderline": True
 }
-num_clicks = st_input_slider(
+slider_value = st_input_slider(
     label="A custom slider", min_value=-100, max_value=200, value=50, step=0.1, options=options)
-st.markdown("Value: %s" % (num_clicks))
+st.markdown("Value: %s" % (slider_value))
 
 with st.sidebar:
     st.markdown("This is another slider with all default options:")
-    st_input_slider()
+    value = st_input_slider()
+    value
