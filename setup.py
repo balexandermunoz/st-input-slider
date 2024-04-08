@@ -6,11 +6,11 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 
 setuptools.setup(
-    name="streamlit-custom-component",
+    name="st-input-slider",
     version="0.0.1",
-    author="John Smith",
-    author_email="john@example.com",
-    description="Streamlit component that allows you to do X",
+    author="Brayan Munoz",
+    author_email="balexander.munoz@udea.edu.co",
+    description="A custom Streamlit component that combines a slider with an input box for more precise value selection",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="",
