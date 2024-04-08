@@ -1,4 +1,4 @@
-# streamlit-custom-component
+# streamlit-input-slider
 A custom Streamlit component that combines a slider with an input box for more precise value selection
 
 ## Installation instructions
