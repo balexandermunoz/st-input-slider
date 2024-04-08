@@ -50,15 +50,28 @@ def my_component(
     max_value: float = 100,
     value: float = 50,
     step: float = 1,
+    options: dict[str: any] = None,
     key=None
 ) -> float:
     """Create a new instance of "my_component".
 
     Parameters
     ----------
-    name: str
-        The name of the thing we're saying hello to. The component will display
-        the text "Hello, {name}!"
+    label: str
+        The label for the slider component.
+    min_value: float
+        The minimum value of the slider.
+    max_value: float
+        The maximum value of the slider.
+    value: float
+        The initial value of the slider.
+    step: float
+        The step size for each slider movement.
+    options: dict
+        Additional options for the slider component. Options include:
+        - "color": str, default is the primary theme color. This sets the color of the slider.
+        - "inputWidth": str, default is "48px". This sets the width of the input box.
+        - "disableUnderline": bool, default is False. If True, the underline of the input box is disabled.
     key: str or None
         An optional key that uniquely identifies this component. If this is
         None, and the component's arguments are changed, the component will
@@ -66,13 +79,12 @@ def my_component(
 
     Returns
     -------
-    int
-        The number of times the component's "Click Me" button has been clicked.
-        (This is the value passed to `Streamlit.setComponentValue` on the
-        frontend.)
+    float
+        The current value of the slider. This is the value passed to 
+        `Streamlit.setComponentValue` on the frontend.
 
     """
     component_value = _component_func(
         label=label, min_value=min_value, max_value=max_value,
-        value=value, step=step, key=key, default=value)
+        value=value, step=step, options=options, key=key, default=value)
     return component_value
