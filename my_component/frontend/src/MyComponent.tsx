@@ -43,22 +43,31 @@ class InputSlider extends StreamlitComponentBase<State> {
   }
 
   handleSliderChange = (event: Event, newValue: number | number[]) => {
-    this.setState({ value: newValue as number })
-    Streamlit.setComponentValue(newValue)
+    this.setState({ value: newValue as number }, () => {
+      Streamlit.setComponentValue(this.state.value);
+    });
   }
-
+  
   handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
       value: event.target.value === "" ? 0 : Number(event.target.value),
-    })
-    Streamlit.setComponentValue(Number(event.target.value))
+    }, () => {
+      Streamlit.setComponentValue(this.state.value);
+    });
   }
 
   handleBlur = () => {
-    if (this.state.value < 0) {
-      this.setState({ value: 0 })
-    } else if (this.state.value > 100) {
-      this.setState({ value: 100 })
+    const min_value = this.props.args.min_value
+    const max_value = this.props.args.max_value
+    console.log(min_value, max_value)
+    if (this.state.value < min_value) {
+      this.setState({ value: min_value }, () => {
+        Streamlit.setComponentValue(this.state.value);
+      })
+    } else if (this.state.value > max_value) {
+      this.setState({ value: max_value }, () => {
+        Streamlit.setComponentValue(this.state.value);
+      })
     }
   }
 
