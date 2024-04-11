@@ -1,13 +1,14 @@
 import { createTheme } from "@mui/material/styles"
 
-export const createCustomTheme = (props: any) =>
-  createTheme({
+export const createCustomTheme = (props: any) => {
+  const mainColor =
+    props.args.options && props.args.options.color
+      ? props.args.options.color
+      : props.theme.primaryColor
+  return createTheme({
     palette: {
       primary: {
-        main:
-          props.args.options && props.args.options.color
-            ? props.args.options.color
-            : props.theme.primaryColor,
+        main: mainColor,
         light: "#42a5f5",
         dark: "#1565c0",
         contrastText: "#fff",
@@ -34,11 +35,9 @@ export const createCustomTheme = (props: any) =>
       },
       MuiInput: {
         styleOverrides: {
-          input: {
-            width:
-              props.args.options && props.args.options.inputWidth
-                ? props.args.options.inputWidth
-                : "48px",
+          root: {
+            width: "100%",
+            maxWidth: "120px",
           },
         },
       },
@@ -47,8 +46,15 @@ export const createCustomTheme = (props: any) =>
           thumb: {
             height: 12,
             width: 12,
+            "&:hover": {
+              boxShadow: `0px 0px 0px 2px ${mainColor}33`,
+            },
+            "&.Mui-active, &:focus": {
+              boxShadow: `0px 0px 0px 4px ${mainColor}33`,
+            },
           },
         },
       },
     },
   })
+}

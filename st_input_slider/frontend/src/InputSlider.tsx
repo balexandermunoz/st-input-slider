@@ -69,7 +69,7 @@ class InputSlider extends StreamlitComponentBase<State> {
         : false
     const theme = createCustomTheme(this.props)
     const vMargin = 0
-    const hMargin = 20
+    const hMargin = 10
     return (
       <ThemeProvider theme={theme}>
         <Box margin={`${vMargin}px ${hMargin}px`}>
@@ -77,7 +77,7 @@ class InputSlider extends StreamlitComponentBase<State> {
             {this.props.args.label}
           </Typography>
           <Grid container spacing={2} alignItems="center">
-            <Grid item xs>
+            <Grid item xs sx={{ width: '70%' }}>
               <Slider
                 value={
                   typeof this.state.value === "number" ? this.state.value : 0
@@ -97,7 +97,7 @@ class InputSlider extends StreamlitComponentBase<State> {
                 }
               />
             </Grid>
-            <Grid item>
+            <Grid item sx={{ width: '30%' }}>
               <MuiInput
                 disableUnderline={disableUnderline}
                 sx={{

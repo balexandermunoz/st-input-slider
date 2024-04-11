@@ -5,7 +5,6 @@ from st_input_slider import st_input_slider
 st.title("Slider + Input Example!")
 options = {
     "color": "#9E9A35",
-    "inputWidth": "58px",
     "disableUnderline": True,
     "marks": False,
 }
