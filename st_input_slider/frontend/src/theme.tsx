@@ -18,6 +18,7 @@ export const createCustomTheme = (props: any) =>
       },
       text: {
         primary: props.theme.textColor,
+        secondary: props.theme.textColor,
       },
     },
     typography: {
