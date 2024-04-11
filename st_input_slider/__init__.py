@@ -1,4 +1,6 @@
 import os
+from typing import Any, Dict
+
 import streamlit.components.v1 as components
 
 # Create a _RELEASE constant. We'll set this to False while we're developing
@@ -50,8 +52,8 @@ def st_input_slider(
     max_value: float = 100,
     value: float = 50,
     step: float = 1,
-    options: dict[str: any] = None,
-    key=None
+    options: Dict[str, Any] = None,
+    key: str=None
 ) -> float:
     """Create a new instance of "st_input_slider".
 
