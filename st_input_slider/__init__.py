@@ -74,6 +74,8 @@ def st_input_slider(
         - "color": str, default is the primary theme color. This sets the color of the slider.
         - "marks": bool, default false. Set initial and final marks.
         - "disableUnderline": bool, default is False. If True, the underline of the input box is disabled.
+        - "labelPosition": str, "top" or "left". Default is "top". The position of the label.
+        - "labelFontSize": float, default is 14. The font size of the label.
     key: str or None
         An optional key that uniquely identifies this component. If this is
         None, and the component's arguments are changed, the component will

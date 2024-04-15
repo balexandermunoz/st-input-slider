@@ -67,17 +67,42 @@ class InputSlider extends StreamlitComponentBase<State> {
       this.props.args.options && this.props.args.options.disableUnderline
         ? this.props.args.options.disableUnderline
         : false
+    const labelPosition =
+      this.props.args.options && this.props.args.options.labelPosition
+        ? this.props.args.options.labelPosition
+        : "top"
+    const labelFontSize =
+      this.props.args.options && this.props.args.options.labelFontSize
+        ? this.props.args.options.labelFontSize
+        : "14px"
     const theme = createCustomTheme(this.props)
     const vMargin = 0
     const hMargin = 10
     return (
       <ThemeProvider theme={theme}>
         <Box margin={`${vMargin}px ${hMargin}px`}>
-          <Typography id="input-slider" gutterBottom>
-            {this.props.args.label}
-          </Typography>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs sx={{ width: '70%' }}>
+          {labelPosition === "top" && (
+            <Typography
+              id="input-slider"
+              gutterBottom
+              sx={{ fontSize: labelFontSize }}
+            >
+              {this.props.args.label}
+            </Typography>
+          )}
+          <Grid container rowSpacing={0} columnSpacing={2} alignItems="center">
+            {labelPosition === "left" && (
+              <Grid item sx={{ width: "20%" }}>
+                <Typography
+                  id="input-slider"
+                  gutterBottom
+                  sx={{ fontSize: labelFontSize }}
+                >
+                  {this.props.args.label}
+                </Typography>
+              </Grid>
+            )}
+            <Grid item xs sx={{ width: "60%" }}>
               <Slider
                 value={
                   typeof this.state.value === "number" ? this.state.value : 0
@@ -97,7 +122,7 @@ class InputSlider extends StreamlitComponentBase<State> {
                 }
               />
             </Grid>
-            <Grid item sx={{ width: '30%' }}>
+            <Grid item sx={{ width: "20%" }}>
               <MuiInput
                 disableUnderline={disableUnderline}
                 sx={{

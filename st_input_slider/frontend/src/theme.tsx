@@ -37,7 +37,6 @@ export const createCustomTheme = (props: any) => {
         styleOverrides: {
           root: {
             width: "100%",
-            maxWidth: "120px",
           },
         },
       },
