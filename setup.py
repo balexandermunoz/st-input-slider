@@ -13,7 +13,7 @@ setuptools.setup(
     description="A custom Streamlit component that combines a slider with an input box for more precise value selection",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="",
+    url="https://github.com/balexandermunoz/st-input-slider",
     packages=setuptools.find_packages(),
     include_package_data=True,
     classifiers=[],
