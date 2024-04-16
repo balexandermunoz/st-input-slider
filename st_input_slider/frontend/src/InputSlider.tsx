@@ -1,14 +1,11 @@
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
-import MuiInput from "@mui/material/Input"
-import Slider from "@mui/material/Slider"
-import Typography from "@mui/material/Typography"
 import { ThemeProvider } from "@mui/material/styles"
 import * as React from "react"
-import { createCustomTheme } from "./theme"
+import CustomInput from "./CustomInput"
 import Label from "./CustomLabel"
 import CustomSlider from "./CustomSlider"
-import CustomInput from "./CustomInput"
+import { createCustomTheme } from "./theme"
 
 import {
   Streamlit,
