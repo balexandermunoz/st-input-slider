@@ -6,85 +6,15 @@ import Typography from "@mui/material/Typography"
 import { ThemeProvider } from "@mui/material/styles"
 import * as React from "react"
 import { createCustomTheme } from "./theme"
+import Label from "./CustomLabel"
+import CustomSlider from "./CustomSlider"
+import CustomInput from "./CustomInput"
 
 import {
   Streamlit,
   StreamlitComponentBase,
   withStreamlitConnection,
 } from "streamlit-component-lib"
-
-interface LabelProps {
-  fontSize: number
-  label: string
-}
-const Label: React.FC<LabelProps> = ({ fontSize, label }) => (
-  <Typography id="input-slider" gutterBottom sx={{ fontSize }}>
-    {label}
-  </Typography>
-)
-
-interface CustomSliderProps {
-  value: number
-  handleSliderChange: (event: any, newValue: number | number[]) => void
-  min: number
-  max: number
-  step: number
-  marks: any
-}
-const CustomSlider: React.FC<CustomSliderProps> = ({
-  value,
-  handleSliderChange,
-  min,
-  max,
-  step,
-  marks,
-}) => (
-  <Slider
-    value={value}
-    onChange={handleSliderChange}
-    onChangeCommitted={() => Streamlit.setComponentValue(value)}
-    aria-labelledby="input-slider"
-    step={step}
-    min={min}
-    max={max}
-    marks={marks}
-  />
-)
-
-interface CustomInputProps {
-  disableUnderline: boolean
-  value: number
-  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  handleBlur: () => void
-  step: number
-  min: number
-  max: number
-}
-
-const CustomInput: React.FC<CustomInputProps> = ({
-  disableUnderline,
-  value,
-  handleInputChange,
-  handleBlur,
-  step,
-  min,
-  max,
-}) => (
-  <MuiInput
-    disableUnderline={disableUnderline}
-    value={value}
-    size="small"
-    onChange={handleInputChange}
-    onBlur={handleBlur}
-    inputProps={{
-      step,
-      min,
-      max,
-      type: "number",
-      "aria-labelledby": "input-slider",
-    }}
-  />
-)
 
 interface State {
   value: number
