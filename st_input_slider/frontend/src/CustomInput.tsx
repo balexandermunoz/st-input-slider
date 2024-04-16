@@ -1,4 +1,5 @@
 import MuiInput from "@mui/material/Input"
+import InputAdornment from '@mui/material/InputAdornment';
 import * as React from "react"
 
 interface CustomInputProps {
@@ -6,6 +7,7 @@ interface CustomInputProps {
   value: number
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   handleBlur: () => void
+  endAdornment: any
   step: number
   min: number
   max: number
@@ -16,6 +18,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
   value,
   handleInputChange,
   handleBlur,
+  endAdornment,
   step,
   min,
   max,
@@ -26,6 +29,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
     size="small"
     onChange={handleInputChange}
     onBlur={handleBlur}
+    endAdornment={ endAdornment && <InputAdornment position="end">{endAdornment}</InputAdornment>}
     inputProps={{
       step,
       min,

@@ -79,6 +79,9 @@ class InputSlider extends StreamlitComponentBase<State> {
       this.props.args.options && this.props.args.options.marks
         ? this.marks
         : false
+    const endAdornment = this.props.args.options && this.props.args.options.endAdornment
+        ? this.props.args.options.endAdornment
+        : false
     const theme = createCustomTheme(this.props)
     const vMargin = 0
     const hMargin = 10
@@ -107,6 +110,7 @@ class InputSlider extends StreamlitComponentBase<State> {
             <Grid item sx={{ width: "20%" }}>
               <CustomInput
                 disableUnderline={disableUnderline}
+                endAdornment={endAdornment}
                 value={this.state.value}
                 handleInputChange={this.handleInputChange}
                 handleBlur={this.handleBlur}
