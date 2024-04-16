@@ -16,6 +16,17 @@ interface State {
   value: number
 }
 
+interface LabelProps {
+  fontSize: number
+  label: string
+}
+
+const Label: React.FC<LabelProps> = ({ fontSize, label }) => (
+  <Typography id="input-slider" gutterBottom sx={{ fontSize }}>
+    {label}
+  </Typography>
+)
+
 class InputSlider extends StreamlitComponentBase<State> {
   constructor(props: any) {
     super(props)
@@ -86,24 +97,12 @@ class InputSlider extends StreamlitComponentBase<State> {
       <ThemeProvider theme={theme}>
         <Box margin={`${vMargin}px ${hMargin}px`}>
           {labelPosition === "top" && (
-            <Typography
-              id="input-slider"
-              gutterBottom
-              sx={{ fontSize: labelFontSize }}
-            >
-              {this.props.args.label}
-            </Typography>
+            <Label fontSize={labelFontSize} label={this.props.args.label} />
           )}
           <Grid container rowSpacing={0} columnSpacing={2} alignItems="center">
             {labelPosition === "left" && (
               <Grid item sx={{ width: "20%" }}>
-                <Typography
-                  id="input-slider"
-                  gutterBottom
-                  sx={{ fontSize: labelFontSize }}
-                >
-                  {this.props.args.label}
-                </Typography>
+                <Label fontSize={labelFontSize} label={this.props.args.label} />
               </Grid>
             )}
             <Grid item xs sx={{ width: "60%" }}>
