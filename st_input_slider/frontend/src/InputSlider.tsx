@@ -12,21 +12,83 @@ import {
   StreamlitComponentBase,
   withStreamlitConnection,
 } from "streamlit-component-lib"
-interface State {
-  value: number
-}
 
 interface LabelProps {
   fontSize: number
   label: string
 }
-
 const Label: React.FC<LabelProps> = ({ fontSize, label }) => (
   <Typography id="input-slider" gutterBottom sx={{ fontSize }}>
     {label}
   </Typography>
 )
 
+interface CustomSliderProps {
+  value: number
+  handleSliderChange: (event: any, newValue: number | number[]) => void
+  min: number
+  max: number
+  step: number
+  marks: any
+}
+const CustomSlider: React.FC<CustomSliderProps> = ({
+  value,
+  handleSliderChange,
+  min,
+  max,
+  step,
+  marks,
+}) => (
+  <Slider
+    value={value}
+    onChange={handleSliderChange}
+    onChangeCommitted={() => Streamlit.setComponentValue(value)}
+    aria-labelledby="input-slider"
+    step={step}
+    min={min}
+    max={max}
+    marks={marks}
+  />
+)
+
+interface CustomInputProps {
+  disableUnderline: boolean
+  value: number
+  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  handleBlur: () => void
+  step: number
+  min: number
+  max: number
+}
+
+const CustomInput: React.FC<CustomInputProps> = ({
+  disableUnderline,
+  value,
+  handleInputChange,
+  handleBlur,
+  step,
+  min,
+  max,
+}) => (
+  <MuiInput
+    disableUnderline={disableUnderline}
+    value={value}
+    size="small"
+    onChange={handleInputChange}
+    onBlur={handleBlur}
+    inputProps={{
+      step,
+      min,
+      max,
+      type: "number",
+      "aria-labelledby": "input-slider",
+    }}
+  />
+)
+
+interface State {
+  value: number
+}
 class InputSlider extends StreamlitComponentBase<State> {
   constructor(props: any) {
     super(props)
@@ -106,38 +168,24 @@ class InputSlider extends StreamlitComponentBase<State> {
               </Grid>
             )}
             <Grid item xs sx={{ width: "60%" }}>
-              <Slider
-                value={
-                  typeof this.state.value === "number" ? this.state.value : 0
-                }
-                onChange={this.handleSliderChange}
-                onChangeCommitted={() =>
-                  Streamlit.setComponentValue(this.state.value)
-                }
-                aria-labelledby="input-slider"
-                step={this.props.args.step}
+              <CustomSlider
+                value={this.state.value}
+                handleSliderChange={this.handleSliderChange}
                 min={this.props.args.min_value}
                 max={this.props.args.max_value}
+                step={this.props.args.step}
                 marks={marks}
               />
             </Grid>
             <Grid item sx={{ width: "20%" }}>
-              <MuiInput
+              <CustomInput
                 disableUnderline={disableUnderline}
-                sx={{
-                  ":before": { borderBottomColor: theme.palette.text.primary },
-                }}
                 value={this.state.value}
-                size="small"
-                onChange={this.handleInputChange}
-                onBlur={this.handleBlur}
-                inputProps={{
-                  step: this.props.args.step,
-                  min: this.props.args.min_value,
-                  max: this.props.args.max_value,
-                  type: "number",
-                  "aria-labelledby": "input-slider",
-                }}
+                handleInputChange={this.handleInputChange}
+                handleBlur={this.handleBlur}
+                step={this.props.args.step}
+                min={this.props.args.min_value}
+                max={this.props.args.max_value}
               />
             </Grid>
           </Grid>
