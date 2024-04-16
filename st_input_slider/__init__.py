@@ -76,6 +76,7 @@ def st_input_slider(
         - "disableUnderline": bool, default is False. If True, the underline of the input box is disabled.
         - "labelPosition": str, "top" or "left". Default is "top". The position of the label.
         - "labelFontSize": float, default is 14. The font size of the label.
+        - "endAdornment" str, Default None. The text at the end of the input box. 
     key: str or None
         An optional key that uniquely identifies this component. If this is
         None, and the component's arguments are changed, the component will
