@@ -1,10 +1,6 @@
 import Slider from "@mui/material/Slider"
 import * as React from "react"
-import {
-  Streamlit,
-  StreamlitComponentBase,
-  withStreamlitConnection,
-} from "streamlit-component-lib"
+import { Streamlit } from "streamlit-component-lib"
 
 interface CustomSliderProps {
   value: number
