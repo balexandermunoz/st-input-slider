@@ -52,6 +52,15 @@ export const createCustomTheme = (props: any) => {
               boxShadow: `0px 0px 0px 4px ${mainColor}33`,
             },
           },
+          markLabel: {
+            marginTop: -4,
+            fontWeight: 500,
+            fontSize: "12px",
+            transform:'translateX(-100%)',
+            '&[data-index="0"]' : {
+              transform:'none'
+            },
+          },
         },
       },
     },
