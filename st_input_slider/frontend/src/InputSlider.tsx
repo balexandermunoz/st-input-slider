@@ -75,6 +75,10 @@ class InputSlider extends StreamlitComponentBase<State> {
       this.props.args.options && this.props.args.options.labelFontSize
         ? this.props.args.options.labelFontSize
         : "14px"
+    const marks =
+      this.props.args.options && this.props.args.options.marks
+        ? this.marks
+        : false
     const theme = createCustomTheme(this.props)
     const vMargin = 0
     const hMargin = 10
@@ -115,11 +119,7 @@ class InputSlider extends StreamlitComponentBase<State> {
                 step={this.props.args.step}
                 min={this.props.args.min_value}
                 max={this.props.args.max_value}
-                marks={
-                  this.props.args.options && this.props.args.options.marks
-                    ? this.marks
-                    : false
-                }
+                marks={marks}
               />
             </Grid>
             <Grid item sx={{ width: "20%" }}>
