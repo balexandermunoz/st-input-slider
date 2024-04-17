@@ -46,7 +46,7 @@ def st_input_slider(
         - "marks": bool, default false. Set initial and final marks.
         - "disableUnderline": bool, default is False. If True, the underline of the input box is disabled.
         - "labelPosition": str, "top" or "left". Default is "top". The position of the label.
-        - "labelFontSize": float, default is 14. The font size of the label.
+        - "fontSize": float, default is 12. The font size.
         - "endAdornment" str, Default None. The text at the end of the input box. 
         - "labelWidth": str, default is "20%". The width of the label.
         - "sliderWidth": str, default is "60%". The width of the slider.

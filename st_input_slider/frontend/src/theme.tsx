@@ -2,10 +2,13 @@ import { createTheme } from "@mui/material/styles"
 
 export const createCustomTheme = (props: any) => {
   const mainColor = getMainColor(props)
-
+  const fontSize =
+    props.args.options && props.args.options.fontSize
+      ? props.args.options.fontSize
+      : 12
   return createTheme({
     palette: createPalette(props, mainColor),
-    typography: createTypography(props),
+    typography: createTypography(props, fontSize),
     components: createComponentOverrides(props, mainColor),
   })
 }
@@ -35,9 +38,10 @@ const createPalette = (props: any, mainColor: string) => {
   }
 }
 
-const createTypography = (props: any) => {
+const createTypography = (props: any, fontSize: number) => {
   return {
     fontFamily: props.theme.font,
+    fontSize: fontSize,
   }
 }
 
@@ -91,7 +95,6 @@ const createMuiSliderOverride = (mainColor: string) => {
     markLabel: {
       marginTop: -4,
       fontWeight: 500,
-      fontSize: "12px",
       transform: "translateX(-100%)",
       '&[data-index="0"]': {
         transform: "none",

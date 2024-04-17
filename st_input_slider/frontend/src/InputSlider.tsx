@@ -71,10 +71,6 @@ class InputSlider extends StreamlitComponentBase<State> {
       this.props.args.options && this.props.args.options.labelPosition
         ? this.props.args.options.labelPosition
         : "top"
-    const labelFontSize =
-      this.props.args.options && this.props.args.options.labelFontSize
-        ? this.props.args.options.labelFontSize
-        : "14px"
     const marks =
       this.props.args.options && this.props.args.options.marks
         ? this.marks
@@ -102,12 +98,12 @@ class InputSlider extends StreamlitComponentBase<State> {
       <ThemeProvider theme={theme}>
         <Box margin={`${vMargin}px ${hMargin}px`}>
           {labelPosition === "top" && (
-            <Label fontSize={labelFontSize} label={this.props.args.label} />
+            <Label label={this.props.args.label} />
           )}
           <Grid container rowSpacing={0} columnSpacing={2} alignItems="center">
             {labelPosition === "left" && (
               <Grid item sx={{ width: labelWidth }}>
-                <Label fontSize={labelFontSize} label={this.props.args.label} />
+                <Label label={this.props.args.label} />
               </Grid>
             )}
             <Grid item xs sx={{ width: sliderWidth }}>

@@ -8,7 +8,7 @@ options = {
     "disableUnderline": False,  # Default is False
     "marks": False,  # Default is False
     "labelPosition": "left",  # "top" or "left". Default is "top"
-    "labelFontSize": 14,  # Default is 14
+    "fontSize": 14,  # Default is 12
     "endAdornment": "Hz",  # Default is False (no adornment)
 }
 slider_value = st_input_slider(
