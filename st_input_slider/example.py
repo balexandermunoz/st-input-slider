@@ -10,6 +10,7 @@ options = {
     "labelPosition": "left",  # "top" or "left". Default is "top"
     "fontSize": 14,  # Default is 12
     "endAdornment": "Hz",  # Default is False (no adornment)
+    "labelTextAlign": "right",  # Default is "left"
 }
 slider_value = st_input_slider(
     label="A custom slider", min_value=-100, max_value=200, value=50, step=0.1, options=options)
@@ -22,7 +23,8 @@ with st.sidebar:
     st_input_slider(
         label="A custom slider2", min_value=-1000, max_value=20000, value=50, step=0.1,
         options={"marks": True, "labelPosition": "left",
-                 "labelWidth": "20%", "sliderWidth": "40%", "inputWidth": "40%"})
+                 "labelWidth": "20%", "sliderWidth": "40%", "inputWidth": "40%",
+                 "labelTextAlign": "right"})
     st_input_slider(
         label="A custom slider3", min_value=-0.00001, max_value=0.00002, value=0.000015, step=0.000001, options={"marks": True, "labelPosition": "left"})
     st_input_slider(

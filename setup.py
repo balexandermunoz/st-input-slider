@@ -7,7 +7,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setuptools.setup(
     name="st-input-slider",
-    version="0.1.0",
+    version="0.1.1",
     author="Brayan Munoz",
     author_email="balexander.munoz@udea.edu.co",
     description="A custom Streamlit component that combines a slider with an input box for more precise value selection",

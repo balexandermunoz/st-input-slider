@@ -21,6 +21,7 @@ pip install st-input-slider
   - `marks` (bool): Set initial and final marks. The default is `false`.
   - `disableUnderline` (bool): If `True`, the underline of the input box is disabled. The default is `False`.
   - `labelPosition` (str): The position of the label. Can be `"top"` or `"left"`. The default is `"top"`.
+  - `labelTextAlign`: str, "left", "center", "right", "justify","inherit". Default is "left". The text alignment of the label.
   - `fontSize` (float): The font size. The default is `12`.
   - `endAdornment` (str): Default None. The text at the end of the input box. 
   - `labelWidth`: str, default is `20%`. The width of the label.

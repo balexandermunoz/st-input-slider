@@ -91,6 +91,9 @@ class InputSlider extends StreamlitComponentBase<State> {
       this.props.args.options && this.props.args.options.inputWidth
         ? this.props.args.options.inputWidth
         : "20%"
+    const labelTextAlign = this.props.args.options && this.props.args.options.labelTextAlign
+        ? this.props.args.options.labelTextAlign
+        : "left"
     const theme = createCustomTheme(this.props)
     const vMargin = 0
     const hMargin = 10
@@ -98,12 +101,12 @@ class InputSlider extends StreamlitComponentBase<State> {
       <ThemeProvider theme={theme}>
         <Box margin={`${vMargin}px ${hMargin}px`}>
           {labelPosition === "top" && (
-            <Label label={this.props.args.label} />
+            <Label label={this.props.args.label} align={labelTextAlign}/>
           )}
           <Grid container rowSpacing={0} columnSpacing={2} alignItems="center">
             {labelPosition === "left" && (
               <Grid item sx={{ width: labelWidth }}>
-                <Label label={this.props.args.label} />
+                <Label label={this.props.args.label} align={labelTextAlign} />
               </Grid>
             )}
             <Grid item xs sx={{ width: sliderWidth }}>
