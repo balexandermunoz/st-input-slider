@@ -23,6 +23,9 @@ pip install st-input-slider
   - `labelPosition` (str): The position of the label. Can be `"top"` or `"left"`. The default is `"top"`.
   - `labelFontSize` (float): The font size of the label. The default is `14`.
   - `endAdornment` (str): Default None. The text at the end of the input box. 
+  - `labelWidth`: str, default is `20%`. The width of the label.
+  - `sliderWidth`: str, default is `60%`. The width of the slider.
+  - `inputWidth`: str, default is `20%`. The width of the input box.
 - `key` (str or None): An optional key that uniquely identifies this component. If this is `None`, and the component's arguments are changed, the component will be re-mounted in the Streamlit frontend and lose its current state.
 
 ### Function Returns

@@ -79,9 +79,22 @@ class InputSlider extends StreamlitComponentBase<State> {
       this.props.args.options && this.props.args.options.marks
         ? this.marks
         : false
-    const endAdornment = this.props.args.options && this.props.args.options.endAdornment
+    const endAdornment =
+      this.props.args.options && this.props.args.options.endAdornment
         ? this.props.args.options.endAdornment
         : false
+    const labelWidth =
+      this.props.args.options && this.props.args.options.labelWidth
+        ? this.props.args.options.labelWidth
+        : "20%"
+    const sliderWidth =
+      this.props.args.options && this.props.args.options.sliderWidth
+        ? this.props.args.options.sliderWidth
+        : "60%"
+    const inputWidth =
+      this.props.args.options && this.props.args.options.inputWidth
+        ? this.props.args.options.inputWidth
+        : "20%"
     const theme = createCustomTheme(this.props)
     const vMargin = 0
     const hMargin = 10
@@ -93,11 +106,11 @@ class InputSlider extends StreamlitComponentBase<State> {
           )}
           <Grid container rowSpacing={0} columnSpacing={2} alignItems="center">
             {labelPosition === "left" && (
-              <Grid item sx={{ width: "20%" }}>
+              <Grid item sx={{ width: labelWidth }}>
                 <Label fontSize={labelFontSize} label={this.props.args.label} />
               </Grid>
             )}
-            <Grid item xs sx={{ width: "60%" }}>
+            <Grid item xs sx={{ width: sliderWidth }}>
               <CustomSlider
                 value={this.state.value}
                 handleSliderChange={this.handleSliderChange}
@@ -107,7 +120,7 @@ class InputSlider extends StreamlitComponentBase<State> {
                 marks={marks}
               />
             </Grid>
-            <Grid item sx={{ width: "20%" }}>
+            <Grid item sx={{ width: inputWidth }}>
               <CustomInput
                 disableUnderline={disableUnderline}
                 endAdornment={endAdornment}

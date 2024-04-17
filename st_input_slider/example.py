@@ -20,7 +20,9 @@ with st.sidebar:
     slider_value = st_input_slider(
         label="A custom slider1", min_value=-100, max_value=200, value=50, step=0.1)
     st_input_slider(
-        label="A custom slider2", min_value=-1000, max_value=20000, value=50, step=0.1, options={"marks": True, "labelPosition": "left"})
+        label="A custom slider2", min_value=-1000, max_value=20000, value=50, step=0.1,
+        options={"marks": True, "labelPosition": "left",
+                 "labelWidth": "20%", "sliderWidth": "40%", "inputWidth": "40%"})
     st_input_slider(
         label="A custom slider3", min_value=-0.00001, max_value=0.00002, value=0.000015, step=0.000001, options={"marks": True, "labelPosition": "left"})
     st_input_slider(
