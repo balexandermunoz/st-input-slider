@@ -40,23 +40,24 @@ def st_input_slider(
     options: Dict[str, Any] = None,
     key: str = None
 ) -> float:
-    """Create a new instance of "st_input_slider".
+    """
+    A highly customizable Streamlit component that combines a slider with an input box for more precise value selection.
 
     Parameters
     ----------
-    label: str
+    label: str, default None
         The label for the slider component.
-    min_value: float
+    min_value: float, default 0
         The minimum value of the slider.
-    max_value: float
+    max_value: float, default 100
         The maximum value of the slider.
-    value: float
+    value: float, default 50
         The initial value of the slider.
-    step: float
+    step: float, default 1
         The step size for each slider movement.
-    format: str
-        Default None. A printf-style format string controlling how the interface should display numbers. Check: https://d3js.org/d3-format#locale_format
-    options: dict
+    format: str, default ""
+        A printf-style format string controlling how the interface should display numbers. Check: https://d3js.org/d3-format#locale_format
+    options: dict, default None
         Additional options for the slider component. Options include:
         - "color": str, default is the primary theme color. This sets the color of the slider.
         - "marks": bool, default false. Set initial and final marks.
@@ -68,7 +69,7 @@ def st_input_slider(
         - "labelWidth": str, default is "20%". The width of the label.
         - "sliderWidth": str, default is "60%". The width of the slider.
         - "inputWidth": str, default is "20%". The width of the input box.
-    key: str or None
+    key: str or None, default None
         An optional key that uniquely identifies this component. If this is
         None, and the component's arguments are changed, the component will
         be re-mounted in the Streamlit frontend and lose its current state.
@@ -78,7 +79,6 @@ def st_input_slider(
     float
         The current value of the slider. This is the value passed to 
         `Streamlit.setComponentValue` on the frontend.
-
     """
     options = set_options(options)
     component_value = _component_func(

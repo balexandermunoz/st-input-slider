@@ -1,5 +1,5 @@
 # streamlit-input-slider
-A custom Streamlit component that combines a slider with an input box for more precise value selection
+A highly customizable Streamlit component that combines a slider with an input box for more precise value selection.
 
 ## Installation instructions
 
@@ -11,23 +11,24 @@ pip install st-input-slider
 
 ### Parameters
 
-- `label` (str): The label for the slider component.
-- `min_value` (float): The minimum value of the slider.
-- `max_value` (float): The maximum value of the slider.
-- `value` (float): The initial value of the slider.
-- `step` (float): The step size for each slider movement.
-- `options` (dict): Additional options for the slider component. Options include:
-  - `color` (str): This sets the color of the slider. The default is the primary theme color.
-  - `marks` (bool): Set initial and final marks. The default is `false`.
-  - `disableUnderline` (bool): If `True`, the underline of the input box is disabled. The default is `False`.
-  - `labelPosition` (str): The position of the label. Can be `"top"` or `"left"`. The default is `"top"`.
-  - `labelTextAlign`: str, "left", "center", "right", "justify","inherit". Default is "left". The text alignment of the label.
-  - `fontSize` (float): The font size. The default is `12`.
-  - `endAdornment` (str): Default None. The text at the end of the input box. 
-  - `labelWidth`: str, default is `20%`. The width of the label.
-  - `sliderWidth`: str, default is `60%`. The width of the slider.
-  - `inputWidth`: str, default is `20%`. The width of the input box.
-- `key` (str or None): An optional key that uniquely identifies this component. If this is `None`, and the component's arguments are changed, the component will be re-mounted in the Streamlit frontend and lose its current state.
+- `label` (str, default None): The label for the slider component.
+- `min_value` (float, default 0): The minimum value of the slider.
+- `max_value` (float, default 100): The maximum value of the slider.
+- `value` (float, default 50): The initial value of the slider.
+- `step` (float, default 1): The step size for each slider movement.
+- `format` (str, default None): A printf-style format string controlling how the interface should display numbers. This follows the d3-format specification. Check [d3-format](https://d3js.org/d3-format#locale_format).
+- `options` (dict, default None): Additional options for the slider component. Options include:
+  - `color` (str, default primary theme color): This sets the color of the slider.
+  - `marks` (bool, default False): Set initial and final marks.
+  - `disableUnderline` (bool, default False): If `True`, the underline of the input box is disabled.
+  - `labelPosition` (str, default "top"): The position of the label. Can be `"top"` or `"left"`.
+  - `labelTextAlign` (str, default "left"): The text alignment of the label. Can be "left", "center", "right", "justify", or "inherit".
+  - `fontSize` (float, default 12): The font size.
+  - `endAdornment` (str, default None): The text at the end of the input box.
+  - `labelWidth` (str, default "20%"): The width of the label.
+  - `sliderWidth` (str, default "60%"): The width of the slider.
+  - `inputWidth` (str, default "20%"): The width of the input box.
+- `key` (str or None, default None): An optional key that uniquely identifies this component. If this is `None`, and the component's arguments are changed, the component will be re-mounted in the Streamlit frontend and lose its current state.
 
 ### Function Returns
 
