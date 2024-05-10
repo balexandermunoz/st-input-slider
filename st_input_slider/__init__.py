@@ -3,7 +3,7 @@ from typing import Any, Dict
 
 import streamlit.components.v1 as components
 
-_RELEASE = False
+_RELEASE = True
 
 if not _RELEASE:
     _component_func = components.declare_component(
@@ -36,7 +36,7 @@ def st_input_slider(
     max_value: float = 100,
     value: float = 50,
     step: float = 1,
-    format: str = None,
+    format: str = "",
     options: Dict[str, Any] = None,
     key: str = None
 ) -> float:

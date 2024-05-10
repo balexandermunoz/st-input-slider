@@ -27,11 +27,11 @@ class InputSlider extends StreamlitComponentBase<State> {
   marks = [
     {
       value: this.props.args.min_value,
-      label: d3Format("~s")(this.props.args.min_value),
+      label: d3Format(this.props.args.format)(this.props.args.min_value),
     },
     {
       value: this.props.args.max_value,
-      label: d3Format("~s")(this.props.args.max_value),
+      label: d3Format(this.props.args.format)(this.props.args.max_value),
     },
   ]
   handleSliderChange = (event: Event, newValue: number | number[]) => {
