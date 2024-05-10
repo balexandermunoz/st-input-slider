@@ -6,6 +6,7 @@ import CustomInput from "./CustomInput"
 import Label from "./CustomLabel"
 import CustomSlider from "./CustomSlider"
 import { createCustomTheme } from "./theme"
+import { format as d3Format } from "d3-format"
 
 import {
   Streamlit,
@@ -26,11 +27,11 @@ class InputSlider extends StreamlitComponentBase<State> {
   marks = [
     {
       value: this.props.args.min_value,
-      label: this.props.args.min_value,
+      label: d3Format("~s")(this.props.args.min_value),
     },
     {
       value: this.props.args.max_value,
-      label: this.props.args.max_value,
+      label: d3Format("~s")(this.props.args.max_value),
     },
   ]
   handleSliderChange = (event: Event, newValue: number | number[]) => {
@@ -63,37 +64,14 @@ class InputSlider extends StreamlitComponentBase<State> {
   }
 
   public render = (): React.ReactNode => {
-    const disableUnderline =
-      this.props.args.options && this.props.args.options.disableUnderline
-        ? this.props.args.options.disableUnderline
-        : false
-    const labelPosition =
-      this.props.args.options && this.props.args.options.labelPosition
-        ? this.props.args.options.labelPosition
-        : "top"
-    const marks =
-      this.props.args.options && this.props.args.options.marks
-        ? this.marks
-        : false
-    const endAdornment =
-      this.props.args.options && this.props.args.options.endAdornment
-        ? this.props.args.options.endAdornment
-        : false
-    const labelWidth =
-      this.props.args.options && this.props.args.options.labelWidth
-        ? this.props.args.options.labelWidth
-        : "20%"
-    const sliderWidth =
-      this.props.args.options && this.props.args.options.sliderWidth
-        ? this.props.args.options.sliderWidth
-        : "60%"
-    const inputWidth =
-      this.props.args.options && this.props.args.options.inputWidth
-        ? this.props.args.options.inputWidth
-        : "20%"
-    const labelTextAlign = this.props.args.options && this.props.args.options.labelTextAlign
-        ? this.props.args.options.labelTextAlign
-        : "left"
+    const marks = this.props.args.options.marks ? this.marks : false
+    const disableUnderline = this.props.args.options.disableUnderline
+    const labelPosition = this.props.args.options.labelPosition
+    const labelTextAlign = this.props.args.options.labelTextAlign
+    const endAdornment = this.props.args.options.endAdornment
+    const labelWidth = this.props.args.options.labelWidth
+    const sliderWidth = this.props.args.options.sliderWidth
+    const inputWidth = this.props.args.options.inputWidth
     const theme = createCustomTheme(this.props)
     const vMargin = 0
     const hMargin = 10
@@ -101,7 +79,7 @@ class InputSlider extends StreamlitComponentBase<State> {
       <ThemeProvider theme={theme}>
         <Box margin={`${vMargin}px ${hMargin}px`}>
           {labelPosition === "top" && (
-            <Label label={this.props.args.label} align={labelTextAlign}/>
+            <Label label={this.props.args.label} align={labelTextAlign} />
           )}
           <Grid container rowSpacing={0} columnSpacing={2} alignItems="center">
             {labelPosition === "left" && (

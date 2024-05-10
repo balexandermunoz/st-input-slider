@@ -1,22 +1,13 @@
 import { createTheme } from "@mui/material/styles"
 
 export const createCustomTheme = (props: any) => {
-  const mainColor = getMainColor(props)
-  const fontSize =
-    props.args.options && props.args.options.fontSize
-      ? props.args.options.fontSize
-      : 12
+  const mainColor = props.args.options.color ?? props.theme.primaryColor
+  const fontSize = props.args.options.fontSize
   return createTheme({
     palette: createPalette(props, mainColor),
     typography: createTypography(props, fontSize),
     components: createComponentOverrides(props, mainColor),
   })
-}
-
-const getMainColor = (props: any) => {
-  return props.args.options && props.args.options.color
-    ? props.args.options.color
-    : props.theme.primaryColor
 }
 
 const createPalette = (props: any, mainColor: string) => {

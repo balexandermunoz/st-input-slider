@@ -3,7 +3,7 @@ from typing import Any, Dict
 
 import streamlit.components.v1 as components
 
-_RELEASE = True
+_RELEASE = False
 
 if not _RELEASE:
     _component_func = components.declare_component(
@@ -17,14 +17,28 @@ else:
         "st_input_slider", path=build_dir)
 
 
+DEFAULT_OPTIONS = {
+    "color": None, # A color string
+    "marks": False,
+    "disableUnderline": False,
+    "labelPosition": "top",
+    "labelTextAlign": "left",
+    "fontSize": 12,
+    "endAdornment": None,
+    "labelWidth": "20%",
+    "sliderWidth": "60%",
+    "inputWidth": "20%"
+}
+
 def st_input_slider(
     label: str = None,
     min_value: float = 0,
     max_value: float = 100,
     value: float = 50,
     step: float = 1,
+    format: str = None,
     options: Dict[str, Any] = None,
-    key: str=None
+    key: str = None
 ) -> float:
     """Create a new instance of "st_input_slider".
 
@@ -40,6 +54,8 @@ def st_input_slider(
         The initial value of the slider.
     step: float
         The step size for each slider movement.
+    format: str
+        Default None. A printf-style format string controlling how the interface should display numbers. Check: https://d3js.org/d3-format#locale_format
     options: dict
         Additional options for the slider component. Options include:
         - "color": str, default is the primary theme color. This sets the color of the slider.
@@ -64,7 +80,17 @@ def st_input_slider(
         `Streamlit.setComponentValue` on the frontend.
 
     """
+    options = set_options(options)
     component_value = _component_func(
         label=label, min_value=min_value, max_value=max_value,
-        value=value, step=step, options=options, key=key, default=value)
+        value=value, step=step, format=format,
+        options=options, key=key, default=value
+    )
     return component_value
+
+def set_options(options: dict) -> dict:
+    if not options:
+        return DEFAULT_OPTIONS
+    for key, value in DEFAULT_OPTIONS.items():
+        options[key] = options.get(key, value)
+    return options
