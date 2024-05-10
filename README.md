@@ -29,6 +29,9 @@ pip install st-input-slider
   - `sliderWidth` (str, default "60%"): The width of the slider.
   - `inputWidth` (str, default "20%"): The width of the input box.
 - `key` (str or None, default None): An optional key that uniquely identifies this component. If this is `None`, and the component's arguments are changed, the component will be re-mounted in the Streamlit frontend and lose its current state.
+- `on_change` (Callable, default None): A callback function that is called whenever the slider value changes.
+- `args` (tuple, default None): Additional arguments to pass to the callback function.
+- `kwargs` (dict, default None): Additional keyword arguments to pass to the callback function.
 
 ### Function Returns
 

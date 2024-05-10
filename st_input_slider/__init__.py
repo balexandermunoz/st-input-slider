@@ -1,7 +1,8 @@
 import os
-from typing import Any, Dict
+from typing import Any, Dict, Callable
 
 import streamlit.components.v1 as components
+from utils import register
 
 _RELEASE = True
 
@@ -38,7 +39,10 @@ def st_input_slider(
     step: float = 1,
     format: str = "",
     options: Dict[str, Any] = None,
-    key: str = None
+    key: str = None,
+    on_change: Callable = None,
+    args: tuple = None,
+    kwargs: dict = None
 ) -> float:
     """
     A highly customizable Streamlit component that combines a slider with an input box for more precise value selection.
@@ -73,6 +77,12 @@ def st_input_slider(
         An optional key that uniquely identifies this component. If this is
         None, and the component's arguments are changed, the component will
         be re-mounted in the Streamlit frontend and lose its current state.
+    on_change: Callable, default None
+        A callback function that is called whenever the slider value changes.
+    args: tuple, default None
+        Additional arguments to pass to the callback function.
+    kwargs: dict, default None
+        Additional keyword arguments to pass to the callback function.
 
     Returns
     -------
@@ -80,6 +90,7 @@ def st_input_slider(
         The current value of the slider. This is the value passed to 
         `Streamlit.setComponentValue` on the frontend.
     """
+    register(key, on_change, args, kwargs)
     options = set_options(options)
     component_value = _component_func(
         label=label, min_value=min_value, max_value=max_value,
