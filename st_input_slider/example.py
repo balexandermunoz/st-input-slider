@@ -24,21 +24,17 @@ st.markdown("Value: %s" % (slider_value))
 
 with st.sidebar:
     st.markdown("This is another slider with all default options:")
-    slider_value = st_input_slider(
-        label="A custom slider1",
-        min_value=-100,
-        max_value=200,
-        value=50,
-        step=0.1
-    )
+    slider_value = st_input_slider()
     st.markdown("Value: %s" % (slider_value))
     
+    st.markdown("And more custom sliders:")
     st_input_slider(
         label="A custom slider2",
         min_value=-1000,
         max_value=20000,
         value=50,
         step=0.1,
+        format="~s",
         options={"marks": True, "labelPosition": "left",
                  "labelWidth": "20%", "sliderWidth": "40%", "inputWidth": "40%",
                  "labelTextAlign": "right"})
@@ -48,7 +44,6 @@ with st.sidebar:
         max_value=0.00002,
         value=0.000015,
         step=0.000001,
-        format="~s",
         options={"marks": True, "labelPosition": "left"}
     )
     st_input_slider(
