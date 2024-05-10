@@ -19,7 +19,7 @@ else:
 
 
 DEFAULT_OPTIONS = {
-    "color": None, # A color string
+    "color": None,
     "marks": False,
     "disableUnderline": False,
     "labelPosition": "top",
@@ -30,6 +30,7 @@ DEFAULT_OPTIONS = {
     "sliderWidth": "60%",
     "inputWidth": "20%"
 }
+
 
 def st_input_slider(
     label: str = None,
@@ -98,6 +99,7 @@ def st_input_slider(
         options=options, key=key, default=value
     )
     return component_value
+
 
 def set_options(options: dict) -> dict:
     if not options:
