@@ -1,12 +1,12 @@
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import { ThemeProvider } from "@mui/material/styles"
+import { format as d3Format } from "d3-format"
 import * as React from "react"
 import CustomInput from "./CustomInput"
 import Label from "./CustomLabel"
 import CustomSlider from "./CustomSlider"
 import { createCustomTheme } from "./theme"
-import { format as d3Format } from "d3-format"
 
 import {
   Streamlit,
